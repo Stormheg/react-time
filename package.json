@@ -1,0 +1,47 @@
+{
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "Timer app",
+  "main": "src/index.js",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode=production",
+    "start": "webpack --mode=development --watch",
+    "lint": "stylelint 'src/**/*.scss' --color --cache",
+    "fix": "stylelint 'src/**/*.scss' --color --cache --fix"
+  },
+  "author": "Storm Heg",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "7.1.6",
+    "@babel/preset-env": "7.1.6",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.4",
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "1.0.1",
+    "file-loader": "2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "0.4.5",
+    "node-sass": "4.10.0",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
+    "postcss-loader": "3.0.0",
+    "sass-loader": "7.1.0",
+    "stylelint": "9.8.0",
+    "terser-webpack-plugin": "1.1.0",
+    "webpack": "4.26.0",
+    "webpack-cli": "3.1.2"
+  },
+  "dependencies": {
+    "axios": "0.18.0",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
+    "react-redux": "5.1.1",
+    "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
+    "redux": "4.0.1",
+    "redux-actions": "2.6.4",
+    "redux-form": "7.4.2",
+    "redux-logger": "3.0.6",
+    "redux-promise": "0.6.0"
+  }
+}
