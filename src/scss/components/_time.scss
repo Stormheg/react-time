@@ -1,0 +1,15 @@
+.Time {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+
+  &__Hours,
+  &__Minutes,
+  &__Seconds {
+    padding: 1rem 0.2rem;
+
+    &:not(:last-child)::after {
+      content: ':';
+    }
+  }
+}
