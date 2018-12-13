@@ -1,7 +1,10 @@
-default: clean install
+default: clean install start
 
 clean:
 	rm -rf dist/
+
+start:
+	yarn start
 
 build:
 	yarn run build
