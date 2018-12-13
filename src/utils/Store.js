@@ -2,13 +2,9 @@ import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { handleActions } from 'redux-actions'
 import { createLogger } from 'redux-logger'
 import promiseMiddleware from 'redux-promise'
+import homeReducer from '../reducers/home'
 
 let store = null
-
-const rootReducer = combineReducers({
-  dummy: handleActions({}, {})
-})
-
 export const configureStore = () => {
   let middleware = [promiseMiddleware]
 
@@ -18,6 +14,10 @@ export const configureStore = () => {
       predicate: (getState, action) => !action.type.startsWith('@') && !(action.payload instanceof Promise)
     }))
   }
+
+  const rootReducer = combineReducers({
+    home: homeReducer 
+  })
 
   store = createStore(rootReducer, {}, applyMiddleware(...middleware))
   return store

@@ -1,10 +1,12 @@
-import { compose } from 'recompose'
 import { connect } from 'react-redux'
+import { compose, withHandlers, withState, lifecycle } from 'recompose'
 
 import Home from './Home'
-import withCurrentTime from '../../hocs/withCurrentTime'
+import withCurrentTime from '../../hocs/withCurrentTime';
 
 export default compose(
-    connect(),
+    connect((state) => ({
+        time: state.home.time
+    })),
     withCurrentTime,
 )(Home)

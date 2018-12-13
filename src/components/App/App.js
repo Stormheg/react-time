@@ -16,7 +16,7 @@ export default ({ path = '' }) => (
   <Provider store={store}>
     <Router basename={path}>
       <div className="App">
-        <Route exact path="/" component={Home} />
+        <Route exact path={window.location.pathname} component={Home} />
       </div>
     </Router>
   </Provider>
