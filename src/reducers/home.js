@@ -3,17 +3,20 @@ import { handleActions } from 'redux-actions'
 import { setTime, registerTimer } from '../actions/time'
 
 const reducer = handleActions({
-    [setTime]: (state, action) => ({
-        ...state,
-        time: {
-            hours: action.payload.hours,
-            minutes: action.payload.minutes,
-            seconds: action.payload.seconds
+    [setTime]: (state, action) => {
+        let newState = { ...state }
+        if (!action.error) {
+            newState.time = {
+                id: action.payload.id,
+                hours: action.payload.hours,
+                minutes: action.payload.minutes,
+                seconds: action.payload.seconds
+            }
         }
-    }),
+    },
     [registerTimer]: (state, action) => ({
         ...state,
-        timer: action.payload
+        // time: action.payload
     })
 }, () => {
     let now = new Date()
@@ -23,6 +26,7 @@ const reducer = handleActions({
 
     return {
         time: {
+            id: 0,
             hours,
             minutes,
             seconds
