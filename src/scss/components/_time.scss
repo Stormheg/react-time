@@ -1,11 +1,39 @@
 .Time {
   font-size: 2rem;
-  display: flex;
-  flex-direction: row;
+  text-align: center;
+
+  &__Label {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  &__Country {
+    color: #b1acac;
+  }
+
+  &__Counter {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__Hours {
+    font-size: 3rem;
+  }
+
+  &__Minutes {
+    font-size: 2.2rem;
+    color: #b1acac;
+  }
+
+  &__Seconds {
+    font-size: .8rem;
+    color: #636060;
+  }
 
   &__Hours,
   &__Minutes,
   &__Seconds {
+    user-select: none;
     padding: 1rem 0.2rem;
 
     &:not(:last-child)::after {
