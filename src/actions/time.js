@@ -1,4 +1,4 @@
 import { createAction } from 'redux-actions'
 
-export const setTime = createAction('TIME_SET')
-export const registerTimer = createAction('REGISTER_TIMER')
+export const updateTime = createAction('TIME_UPDATE')
+export const addTime = createAction('TIME_ADD')

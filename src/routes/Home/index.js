@@ -1,12 +1,16 @@
 import { connect } from 'react-redux'
-import { compose, withHandlers, withState, lifecycle } from 'recompose'
+import { compose } from 'recompose'
 
 import Home from './Home'
-import withCurrentLocalTime from '../../hocs/withCurrentLocalTime';
+import withTimezone from '../../hocs/withTimezone';
 
 export default compose(
     connect((state) => ({
-        time: state.home.time
+        timezones: state.home.timezones
     })),
-    withCurrentLocalTime,
+    withTimezone('Europe/Amsterdam',),
+    withTimezone('Europe/London'),
+    withTimezone('America/Los_Angeles'),
+    withTimezone('Australia/Sydney'),
+    withTimezone('Asia/Tokyo'),
 )(Home)
