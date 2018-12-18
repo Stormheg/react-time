@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 
-import { updateTime, addTime } from '../../actions/time'
+import { updateTime, addTime, removeTime } from '../../actions/time'
 
 const reducer = handleActions({
     [updateTime]: (state, action) => {
@@ -25,6 +25,9 @@ const reducer = handleActions({
                 seconds: action.payload.seconds,
             }
         ]
+    },
+    [removeTime]: (state, action) => {
+        return state.filter(time => time.id !== action.payload)
     }
 }, [])
 

@@ -1,7 +1,7 @@
-const getTimeForTimezone = (timeZone, use24hours) => {
+export const getTimeForTimezone = (timeZone, use24hours) => {
     let options = {
         timeZone,
-        hours12: use24hours,
+        hour12: false,
         year: 'numeric', month: 'numeric', day: 'numeric',
         hour: '2-digit', minute: '2-digit', second: '2-digit',
     }
@@ -18,5 +18,3 @@ const getTimeForTimezone = (timeZone, use24hours) => {
 
     return {hours, minutes, seconds}
 }
-
-export default getTimeForTimezone

@@ -4,11 +4,11 @@ import uuid from 'uuid/v4'
 import { getStore } from '../utils/Store'
 import { addTimezone } from '../actions/timezone'
 
-export default (timezone) => WrappedComponent => {
+export default (WrappedComponent) => {
     return class extends React.Component {
         componentDidMount() {
-            const state = getStore().getState()
             let id = uuid()
+            let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 
             this.props.dispatch(addTimezone({
                 id,
