@@ -1,7 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 
-export const configureApi = (store) => {
-  let baseUrl = '/api'
-
-  axios.defaults.baseURL = baseUrl
-}
+export default () => {
+  const baseUrl = '/api';
+  axios.defaults.baseURL = baseUrl;
+};

@@ -1,20 +1,29 @@
-export const getTimeForTimezone = (timeZone, use24hours) => {
-    let options = {
-        timeZone,
-        hour12: false,
-        year: 'numeric', month: 'numeric', day: 'numeric',
-        hour: '2-digit', minute: '2-digit', second: '2-digit',
-    }
-    let hours = 0, minutes = 0, seconds = 0
-    let format = new Intl.DateTimeFormat([], options)
-        .formatToParts(new Date())
-        .map(({type, value}) => {
-            switch (type) {
-                case 'hour': hours = value
-                case 'minute': minutes = value
-                case 'second': seconds = value
-            }
-        })
+export default (timeZone) => {
+  const options = {
+    timeZone,
+    hour12: false,
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  };
 
-    return {hours, minutes, seconds}
-}
+  let hours = 0;
+  let minutes = 0;
+  let seconds = 0;
+  new Intl.DateTimeFormat([], options)
+    .formatToParts(new Date())
+    .map(({ type, value }) => {
+      switch (type) {
+        case 'hour': hours = value; break;
+        case 'minute': minutes = value; break;
+        case 'second': seconds = value; break;
+        default: break;
+      }
+      return null;
+    });
+
+  return { hours, minutes, seconds };
+};

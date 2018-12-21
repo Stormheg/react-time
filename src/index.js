@@ -1,8 +1,8 @@
-import './scss/index.scss'
+import './scss/index.scss';
 
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App from './components/App'
+import App from './components/App';
 
-ReactDOM.render(<App path='/'></App>, document.getElementById('root'))
+ReactDOM.render(<App path="/" />, document.getElementById('root'));

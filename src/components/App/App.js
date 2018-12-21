@@ -1,15 +1,15 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { configureApi } from '../../utils/Api'
-import { configureStore, getStore } from '../../utils/Store'
+import configureApi from '../../utils/Api';
+import { configureStore } from '../../utils/Store';
 
-import Home from '../../routes/Home'
+import Home from '../../routes/Home';
 
-const store = configureStore()
+const store = configureStore();
 
-configureApi(store)
+configureApi(store);
 
 
 export default ({ path = '' }) => (
@@ -20,4 +20,4 @@ export default ({ path = '' }) => (
       </div>
     </Router>
   </Provider>
-)
+);

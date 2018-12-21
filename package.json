@@ -7,8 +7,10 @@
   "scripts": {
     "build": "webpack --mode=production",
     "start": "webpack --mode=development --watch",
-    "lint": "stylelint 'src/**/*.scss' --color --cache",
-    "fix": "stylelint 'src/**/*.scss' --color --cache --fix"
+    "lint-js": "eslint \"src/**.js\"",
+    "fix-js": "eslint \"src/**.js\" --fix",
+    "lint-styles": "stylelint 'src/**/*.scss' --color --cache",
+    "fix-styles": "stylelint 'src/**/*.scss' --color --cache --fix"
   },
   "author": "Storm Heg",
   "license": "UNLICENSED",
@@ -19,8 +21,13 @@
     "babel-loader": "8.0.4",
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "2.0.1",
+    "eslint": "5.10.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.2",
+    "eslint-plugin-react": "7.11.1",
     "file-loader": "2.0.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "3.2.0",
     "mini-css-extract-plugin": "0.5.0",
     "node-sass": "4.11.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
@@ -33,7 +40,6 @@
   },
   "dependencies": {
     "axios": "0.18.0",
-    "uuid": "3.3.2",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2",
     "react-redux": "6.0.0",
@@ -44,6 +50,7 @@
     "redux-actions": "2.6.4",
     "redux-form": "8.0.4",
     "redux-logger": "3.0.6",
-    "redux-promise": "0.6.0"
+    "redux-promise": "0.6.0",
+    "uuid": "3.3.2"
   }
 }
