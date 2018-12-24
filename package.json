@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "webpack --mode=production",
-    "start": "webpack --mode=development --watch",
+    "start": "webpack-dev-server --mode=development",
     "lint-js": "eslint \"src/**.js\"",
     "fix-js": "eslint \"src/**.js\" --fix",
     "lint-styles": "stylelint 'src/**/*.scss' --color --cache",
@@ -36,7 +36,8 @@
     "stylelint": "9.9.0",
     "terser-webpack-plugin": "1.1.0",
     "webpack": "4.27.1",
-    "webpack-cli": "3.1.2"
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.14"
   },
   "dependencies": {
     "axios": "0.18.0",

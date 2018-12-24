@@ -1,17 +1,16 @@
-const path = require('path')
+const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    'index': './src/index.js'
+    index: './src/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
-    filename: '[name].[contenthash].js'
+    filename: '[name].[contenthash].js',
   },
   optimization: {
     splitChunks: {
@@ -19,49 +18,53 @@ module.exports = {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
-          chunks: 'all'
-        }
-      }
+          chunks: 'all',
+        },
+      },
     },
     minimizer: [
       new TerserPlugin({
         cache: true,
-        parallel: true
+        parallel: true,
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   module: {
     rules: [{
       test: /\.js$/,
       use: [
-        'babel-loader'
-      ]
+        'babel-loader',
+      ],
     }, {
       test: /\.scss$/,
       use: [
         MiniCssExtractPlugin.loader,
         'css-loader',
-        'sass-loader'
-      ]
+        'sass-loader',
+      ],
     }, {
       test: /\.(eot|ttf|woff|woff2|svg)$/,
       use: {
         loader: 'file-loader',
         options: {
-          name: 'assets/[name].[ext]'
-        }
-      }
-    }]
+          name: 'assets/[name].[ext]',
+        },
+      },
+    }],
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
-      chunkFilename: '[id].css'
+      chunkFilename: '[id].css',
     }),
-  ]
-}
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 8080,
+  },
+};
