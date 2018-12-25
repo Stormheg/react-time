@@ -1,4 +1,5 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -6,33 +7,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
+    app: './src/index.js',
   },
   output: {
-    path: path.resolve(__dirname, 'dist/'),
-    filename: '[name].[contenthash].js',
-  },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all',
-        },
-      },
-    },
-    minimizer: [
-      new TerserPlugin({
-        cache: true,
-        parallel: true,
-      }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
+    path: path.resolve(process.cwd(), 'dist/'),
+    filename: '[name].js',
   },
   module: {
     rules: [{
       test: /\.js$/,
+      exclude: /node_modules/,
       use: [
         'babel-loader',
       ],
@@ -53,18 +37,34 @@ module.exports = {
       },
     }],
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
   plugins: [
+    new CleanWebpackPlugin(['dist'], {
+      root: process.cwd(),
+    }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: path.resolve(process.cwd(), 'src/index.html'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].css',
     }),
   ],
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 8080,
-  },
 };
